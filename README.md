@@ -1,88 +1,88 @@
 # How to Create Discord Bots
-A full guide how to make a basic discord bot by The Abyss Team
+A full guide on how to make a basic Discord bot by The Abyss Team
 
-I'm a dev from discord.py for a long time(since 2021), and i know the frustation about creating this aplications and how hard for initiante people. So a make this documentation in Python for those people
+I've been a discord.py dev for a long time (since 2021), and I know the frustration of creating these applications and how hard it is for beginners. So I made this documentation in Python for those people
 
 # 1. Requirements
-- Have a discord account(if you have any question, ask me in discord "immilkk")
-- One Discord server with you as an administrator permission
+- Have a Discord account (if you have any questions, ask me on Discord: "immilkk")
+- One Discord server with you as an administrator
 - Python 3.10+
-- Basic Knowledge about discord, like, funcitons, class, and simple logic
+- Basic knowledge about Discord, like functions, classes, and simple logic
 
-# 2. Creating the discord bot in Discord
-The discord allow you to create in [Discord Develper Portal](https://discord.com/developers/applications)
-- In applications, click in "New Aplication"
+# 2. Creating the Discord bot in Discord
+Discord allows you to create bots in the [Discord Developer Portal](https://discord.com/developers/applications)
+- In applications, click on "New Application"
 - Create a cool name for the bot, like "The Abyss"
-- Go to the Bot tab and click in add bot
-- Copy the Toker
+- Go to the Bot tab and click on "Add Bot"
+- Copy the Token
 **WARNING: DO NOT SHARE THE DISCORD BOT TOKEN!!!**
 
-# 3. Invite the bot for the server
-The Bot only work if you add them to the server
-- Got to OAuth2/URL Generator
-- Got to Scopes tab and select:
+# 3. Invite the bot to the server
+The bot only works if you add it to the server
+- Go to OAuth2/URL Generator
+- Go to the Scopes tab and select:
   - Bot
   - applications.commands
-- In Bot Permissions, chose the basic permissions:
+- In Bot Permissions, choose the basic permissions:
     - Send Messages
     - Read Message History
   - Copy and paste in browser
-  - Chose the server
+  - Choose the server
 
 # 4. Creating the Files
-Before starting, its necessary you have the Virtual Envoriment, for this, run the command:
-```
+Before starting, it's necessary to have a Virtual Environment. For this, run the command:
+```bash
 python -m venv .venv
 ```
-Now, activate the venv with command:
-```windows
+Now, activate the venv with the command:
+```powershell
 .\.venv\Scripts\activate
 ```
-``` Linux/Mac
+```bash
 source venv/bin/activate
 ```
-Download discord.py
-``` Linux/Mac
+Download discord.py:
+```bash
 pip install -U discord.py
 ```
 
-# 5. Minimal code from bot
-I'm going to commit all the code for more compreense:
+# 5. Minimal code for the bot
+I'm going to show all the code for better comprehension:
 ```python
 import discord # Import the discord lib
 from discord.ext import commands
 
 intents = discord.Intents.default() # The discord bot intents can be found in bot tab
-intents.message_conent = True
+intents.message_content = True
 
 bot = commands.Bot(command_prefix="!", intents=intents) # Declare the bot command
 
 @bot.event # Event in discord bot
 async def on_ready():
-  print("Bot connected with {bot.user}")
+  print(f"Bot connected as {bot.user}")
 
 @bot.command() # Create a command
-async def ping(ctx): # Enter of command
-  await ctx.send("Pong!") # Reponse
+async def ping(ctx): # Command entry point
+  await ctx.send("Pong!") # Response
 
 bot.run("YOUR_TOKEN") # API Key
 ```
 
 # 6. Basic Concepts
-- Intents: permissions that says to bot what he can allow or deny on discord
-- Events: automatic actions(ex: on_ready, on_message)
-- commands: activate commands by prefix or slash
-- ctx(context): informatios about who use the command
+- Intents: permissions that tell the bot what it can allow or deny on Discord
+- Events: automatic actions (ex: on_ready, on_message)
+- Commands: activate commands by prefix or slash
+- ctx (context): information about who used the command
 
 # 7. Next Steps
 - Slash Commands
 - Cogs
-- Database(SQLite3 or PostgreSQL)
-- Host(Railway, VPS, Docker)
-- System of role perms
+- Database (SQLite3 or PostgreSQL)
+- Hosting (Railway, VPS, Docker)
+- Role permission systems
 
 # 8. Good Tips
-- NEVER commit the discord token on GitHub
-- Use Ambient Variables
-- Spread the command with files
-- use try/execpt for errors
+- NEVER commit the Discord token to GitHub
+- Use Environment Variables
+- Organize commands into separate files
+- Use try/except for error handling
