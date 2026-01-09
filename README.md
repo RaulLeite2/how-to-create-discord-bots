@@ -245,6 +245,10 @@ async def divide_error(ctx, error):
 @bot.command(name='serverinfo')
 async def serverinfo(ctx):
     """Displays server information"""
+    if not ctx.guild:
+        await ctx.send("This command can only be used in a server!")
+        return
+    
     guild = ctx.guild
     embed = discord.Embed(
         title=f"{guild.name}",
