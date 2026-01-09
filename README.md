@@ -251,9 +251,11 @@ async def serverinfo(ctx):
         description=f"Server information for {guild.name}",
         color=discord.Color.green()
     )
-    embed.set_thumbnail(url=guild.icon.url if guild.icon else None)
+    if guild.icon:
+        embed.set_thumbnail(url=guild.icon.url)
     embed.add_field(name="Server ID", value=guild.id, inline=True)
-    embed.add_field(name="Owner", value=guild.owner.mention, inline=True)
+    owner_mention = guild.owner.mention if guild.owner else "Unknown"
+    embed.add_field(name="Owner", value=owner_mention, inline=True)
     embed.add_field(name="Members", value=guild.member_count, inline=True)
     embed.add_field(name="Created At", value=guild.created_at.strftime("%Y-%m-%d"), inline=True)
     await ctx.send(embed=embed)
@@ -274,6 +276,7 @@ async def serverinfo(ctx):
 
 ```python
 # cogs/moderation.py
+import discord
 from discord.ext import commands
 
 class Moderation(commands.Cog):
