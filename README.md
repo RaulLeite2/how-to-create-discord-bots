@@ -446,7 +446,7 @@ async def setup(bot):
 
 - 500 execution hours per month
 - $5 of usage included
-- Perfect for hosting a Discord bot 24/7
+- Suitable for hosting a Discord bot with moderate usage (approximately 20+ days of continuous operation per month)
 
 For more information, visit [Railway Documentation](https://docs.railway.app/).
 
